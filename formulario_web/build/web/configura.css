@@ -1,0 +1,54 @@
+body {
+  display: flex; /* Define o body como um container flexível, permitindo o uso de Flexbox. */
+  flex-direction: column; /* Organiza os elementos filhos do body em uma coluna vertical. */
+  min-height: 100vh; /* Garante que o body ocupe pelo menos a altura total da viewport (janela do navegador). */
+  margin: 0; /* Remove as margens padrão do body, eliminando espaços indesejados. */
+}
+
+header, footer {
+  background-color: burlywood; /* Define a cor de fundo dos elementos header e footer como burlywood (uma cor marrom clara). */
+  padding: 5px; /* Adiciona um preenchimento interno de 5 pixels aos elementos header e footer. */
+}
+
+nav {
+  width: 100%; /* Define a largura do elemento nav como 100% da largura do seu contêiner pai. */
+  background-color: sandybrown; /* Define a cor de fundo do elemento nav como sandybrown (uma cor marrom-amarelada clara). */
+  padding-top: 10px; /* Adiciona um preenchimento interno de 10 pixels na parte superior do elemento nav. */
+  padding-bottom: 10px; /* Adiciona um preenchimento interno de 10 pixels na parte inferior do elemento nav. */
+}
+
+nav a {
+  padding-left: 20px; /* Adiciona um preenchimento interno de 20 pixels à esquerda dos links (<a>) dentro do nav. */
+  padding-right: 20px; /* Adiciona um preenchimento interno de 20 pixels à direita dos links (<a>) dentro do nav. */
+  color: black; /* Define a cor do texto dos links (<a>) dentro do nav como preto. */
+  text-decoration: none; /* Remove a decoração padrão dos links (sublinhado). */
+}
+
+nav a:hover {
+  color: ivory; /* Define a cor do texto dos links (<a>) dentro do nav como ivory (uma cor branca cremosa) quando o mouse passa por cima. */
+}
+
+section, iframe {
+  flex-direction: column; /* Organiza os elementos filhos de section e iframe em uma coluna vertical (embora flex-direction não tenha efeito direto em elementos que não são flex containers). */
+  width: 100%; /* Define a largura dos elementos section e iframe como 100% da largura do seu contêiner pai. */
+  height: 400px; /* Define a altura dos elementos section e iframe como 400 pixels. */
+}
+
+iframe {
+  border: 0px; /* Remove a borda padrão do elemento iframe. */
+}
+
+footer {
+  position: fixed; /* Fixa o footer na posição, removendo-o do fluxo normal do documento. */
+  bottom: 0; /* Posiciona o footer na parte inferior da viewport. */
+  left: 0; /* Posiciona o footer na extremidade esquerda da viewport. */
+  width: 50%; /* Garante que o footer ocupe toda a largura da viewport. */
+  background-color: #f0f0f0; /* Define a cor de fundo do footer como um cinza claro. */
+  padding: 10px; /* Adiciona um preenchimento interno de 20 pixels ao footer. */
+  text-align: center; /* Alinha o texto dentro do footer ao centro. */
+}
+
+/*
+  Created on : 5 de mar. de 2025, 15:50:59
+  Author      : NICHOLAS
+*/
