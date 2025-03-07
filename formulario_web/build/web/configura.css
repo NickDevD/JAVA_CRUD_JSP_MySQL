@@ -42,9 +42,9 @@ footer {
   position: fixed; /* Fixa o footer na posição, removendo-o do fluxo normal do documento. */
   bottom: 0; /* Posiciona o footer na parte inferior da viewport. */
   left: 0; /* Posiciona o footer na extremidade esquerda da viewport. */
-  width: 50%; /* Garante que o footer ocupe toda a largura da viewport. */
+  width: 100%; /* Garante que o footer ocupe toda a largura da viewport. */
   background-color: #f0f0f0; /* Define a cor de fundo do footer como um cinza claro. */
-  padding: 10px; /* Adiciona um preenchimento interno de 20 pixels ao footer. */
+  padding: 20px; /* Adiciona um preenchimento interno de 20 pixels ao footer. */
   text-align: center; /* Alinha o texto dentro do footer ao centro. */
 }
 
