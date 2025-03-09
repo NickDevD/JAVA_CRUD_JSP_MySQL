@@ -10,6 +10,10 @@ header, footer {
   padding: 5px; /* Adiciona um preenchimento interno de 5 pixels aos elementos header e footer. */
 }
 
+header a {
+  text-decoration: none;
+}
+
 nav {
   width: 100%; /* Define a largura do elemento nav como 100% da largura do seu contêiner pai. */
   background-color: sandybrown; /* Define a cor de fundo do elemento nav como sandybrown (uma cor marrom-amarelada clara). */
