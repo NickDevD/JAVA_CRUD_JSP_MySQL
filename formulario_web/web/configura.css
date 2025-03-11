@@ -1,58 +1,128 @@
 body {
-  display: flex; /* Define o body como um container flexível, permitindo o uso de Flexbox. */
-  flex-direction: column; /* Organiza os elementos filhos do body em uma coluna vertical. */
-  min-height: 100vh; /* Garante que o body ocupe pelo menos a altura total da viewport (janela do navegador). */
-  margin: 0; /* Remove as margens padrão do body, eliminando espaços indesejados. */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: ivory;
+    font-family: sans-serif; /* Fonte padrão para melhor legibilidade */
 }
 
 header, footer {
-  background-color: burlywood; /* Define a cor de fundo dos elementos header e footer como burlywood (uma cor marrom clara). */
-  padding: 5px; /* Adiciona um preenchimento interno de 5 pixels aos elementos header e footer. */
+    background-color: burlywood;
+    padding: 10px;
+    text-align: center;
 }
 
 header a {
-  text-decoration: none;
+    text-decoration: none;
+    color: inherit; /* Herda a cor do texto do header */
 }
 
 nav {
-  width: 100%; /* Define a largura do elemento nav como 100% da largura do seu contêiner pai. */
-  background-color: sandybrown; /* Define a cor de fundo do elemento nav como sandybrown (uma cor marrom-amarelada clara). */
-  padding-top: 10px; /* Adiciona um preenchimento interno de 10 pixels na parte superior do elemento nav. */
-  padding-bottom: 10px; /* Adiciona um preenchimento interno de 10 pixels na parte inferior do elemento nav. */
+    width: 100%;
+    background-color: sandybrown;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 nav a {
-  padding-left: 20px; /* Adiciona um preenchimento interno de 20 pixels à esquerda dos links (<a>) dentro do nav. */
-  padding-right: 20px; /* Adiciona um preenchimento interno de 20 pixels à direita dos links (<a>) dentro do nav. */
-  color: black; /* Define a cor do texto dos links (<a>) dentro do nav como preto. */
-  text-decoration: none; /* Remove a decoração padrão dos links (sublinhado). */
+    padding: 10px 15px;
+    margin: 5px;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 nav a:hover {
-  color: ivory; /* Define a cor do texto dos links (<a>) dentro do nav como ivory (uma cor branca cremosa) quando o mouse passa por cima. */
+    background-color: burlywood;
+    color: ivory;
 }
 
 section, iframe {
-  flex-direction: column; /* Organiza os elementos filhos de section e iframe em uma coluna vertical (embora flex-direction não tenha efeito direto em elementos que não são flex containers). */
-  width: 100%; /* Define a largura dos elementos section e iframe como 100% da largura do seu contêiner pai. */
-  height: 400px; /* Define a altura dos elementos section e iframe como 400 pixels. */
+    flex: 1;
+    width: 100%;
+    height: 400px;
 }
 
 iframe {
-  border: 0px; /* Remove a borda padrão do elemento iframe. */
+    border: 0;
 }
 
 footer {
-  position: fixed; /* Fixa o footer na posição, removendo-o do fluxo normal do documento. */
-  bottom: 0; /* Posiciona o footer na parte inferior da viewport. */
-  left: 0; /* Posiciona o footer na extremidade esquerda da viewport. */
-  width: 100%; /* Garante que o footer ocupe toda a largura da viewport. */
-  background-color: #f0f0f0; /* Define a cor de fundo do footer como um cinza claro. */
-  padding: 20px; /* Adiciona um preenchimento interno de 20 pixels ao footer. */
-  text-align: center; /* Alinha o texto dentro do footer ao centro. */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: antiquewhite;
+    padding: 20px;
+    text-align: center;
 }
 
-/*
-  Created on : 5 de mar. de 2025, 15:50:59
-  Author      : NICHOLAS
-*/
+/* Estilos para o formulário dentro do iframe (cadcli.html) */
+iframe[name="areaform"] {
+    padding: 20px;
+}
+
+iframe[name="areaform"] form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+iframe[name="areaform"] label,
+iframe[name="areaform"] input,
+iframe[name="areaform"] button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+iframe[name="areaform"] input[type="text"],
+iframe[name="areaform"] input[type="tel"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+iframe[name="areaform"] button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+iframe[name="areaform"] button:hover {
+    background-color: #2980b9;
+}
+
+/* Media Queries para Responsividade */
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        width: 90%;
+        text-align: center;
+    }
+
+    iframe[name="areaform"] form {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 10px;
+        font-size: 0.8em;
+    }
+}
