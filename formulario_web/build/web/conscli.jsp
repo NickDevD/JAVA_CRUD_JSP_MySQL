@@ -33,9 +33,13 @@
         }
 
         table {
-            width: 100%;
+            width: 90%;
             border-collapse: collapse;
             margin-top: 20px;
+        }
+        
+        *{
+            margin: 0 auto
         }
 
         th, td {
@@ -78,6 +82,38 @@
             margin-top: 20px;
             color: #777;
         }
+        
+        /* Estilos para os botões Editar e Excluir */
+
+        button[type="submit"] {
+            padding: 8px 12px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+        }
+
+        /* Estilo para o botão Editar */
+        button[type="submit"]:nth-of-type(1) { /* Seleciona o primeiro botão dentro do formulário */
+            background-color: #4CAF50; /* Verde */
+            color: white;
+        }
+
+        button[type="submit"]:nth-of-type(1):hover {
+            background-color: #45a049; /* Verde mais escuro no hover */
+        }
+
+        /* Estilo para o botão Excluir */
+        button[type="submit"]:nth-of-type(2) { /* Seleciona o segundo botão dentro do formulário */
+            background-color: #f44336; /* Vermelho */
+            color: white;
+        }
+
+        button[type="submit"]:nth-of-type(2):hover {
+            background-color: #d32f2f; /* Vermelho mais escuro no hover */
+        }
         </style>
     </head>
     <body>
@@ -91,14 +127,18 @@
                 conecta = DriverManager.getConnection("jdbc:mysql://localhost:3306/controleclientes", "root", "admin");
 
                 // Consultar os dados na tabela clientes do banco de dados
-                st = conecta.prepareStatement("SELECT * FROM clientes");
+                st = conecta.prepareStatement("SELECT * FROM clientes ORDER by nomecli");
                 ResultSet rs = st.executeQuery();// Variável que armazenará os dados do BD
         %>
         
         <!-- Abertura da tabela  -->
-        <table border="1">
+        <table>
             <tr>
-                <th>CPF</th><th>Nome</th><th>Endereço</th><th>Telefone</th>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Ações</th>
             </tr>
 
             <%
@@ -112,9 +152,18 @@
                 <td> <%= rs.getString("nomecli")%> </td>
                 <td> <%= rs.getString("endcli")%> </td>
                 <td> <%= rs.getString("telcli")%> </td>
+                <td>
+                    <form action="editarCliente.jsp" method="get">
+                        <input type="hidden" name="cpf" value="<%= rs.getString("cpfcli") %>">
+                        <button type="submit">Editar</button>
+                    </form>
+                    <form action="excli.jsp" method="get">
+                        <input type="hidden" name="cpf" value="<%= rs.getString("cpfcli") %>">
+                        <button type="submit">Excluir</button>
+                    </form>
+                </td>
             </tr>
-
-
+            
             <%
                 }
             %>

@@ -40,8 +40,16 @@
                 out.print("Cadastro realizado com sucesso");
 
             } catch (Exception x) {
-                out.print("Erro:" + x.getMessage());
-            }
+            String erro = x.getMessage();
+                if(cpf.isEmpty() || nome.isEmpty() || endereco.isEmpty() || telefone.isEmpty()){
+                    out.print("Um dos campos não foi preenchido");
+                }else if(erro.contains("Duplicate entry")){
+                    out.print("<p style='color:orange;font-size:20px'>Cliente já cadastrado!</p>");
+                }else{
+                    out.print("Erro:" + x.getMessage());
+                }
+             } 
+
         %>    
     </body>
 </html>
