@@ -13,19 +13,31 @@
         <%
             String cpf;
             cpf = request.getParameter("cpf");
-            
+
+            try {
+
                 //Conectar com o banco de dados
                 Connection conecta; // Classe utilizada para se conectar com obanco de dados 
                 PreparedStatement st;
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 conecta = DriverManager.getConnection("jdbc:mysql://localhost:3306/controleclientes", "root", "admin");
-                
+
                 // Exclui clientes da tabela
                 st = conecta.prepareStatement("DELETE FROM clientes WHERE cpfcli=?");
                 st.setString(1, cpf);
-                st.executeUpdate(); // Executa o comando DELETE
-                
-                response.sendRedirect("conscli.jsp");
+
+                // Executa o comando DELETE e obtém o número de linhas afetadas
+                int linhasAfetadas = st.executeUpdate();
+
+                if (linhasAfetadas == 0) {
+                    out.print("Cliente com CPF " + cpf + " não encontrado.");
+                } else {
+                    out.print("Cliente com CPF " + cpf + " excluído com sucesso.");
+                }
+
+            } catch (Exception e) {
+                out.print("Parece que estamos com problemas: " + e.getMessage());
+            }
         %>
     </body>
 </html>

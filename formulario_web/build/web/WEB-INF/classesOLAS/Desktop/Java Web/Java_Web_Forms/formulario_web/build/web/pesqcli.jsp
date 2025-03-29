@@ -7,8 +7,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consulta de clientes</title>
-        <style>
+        <title>JSP Page</title>
+         <style>
         body {
             font-family: sans-serif;
             background-color: ivory;
@@ -119,6 +119,9 @@
     <body>
         
         <%
+            String nome;
+            nome = request.getParameter("nome");
+
             try {
                 //Conectar com o banco de dados
                 Connection conecta; // Classe utilizada para se conectar com obanco de dados 
@@ -127,10 +130,11 @@
                 conecta = DriverManager.getConnection("jdbc:mysql://localhost:3306/controleclientes", "root", "admin");
 
                 // Consultar os dados na tabela clientes do banco de dados
-                st = conecta.prepareStatement("SELECT * FROM clientes ORDER by nomecli");
+                st = conecta.prepareStatement("SELECT * FROM clientes WHERE nomecli LIKE ?");
+                st.setString(1, "%"+ nome + "%");
                 ResultSet rs = st.executeQuery();// Variável que armazenará os dados do BD
         %>
-        
+
         <!-- Abertura da tabela  -->
         <table>
             <tr>
@@ -145,8 +149,8 @@
                 // Laço de repetição que exibirá em tela o conteúdo da tabela enquanto tiver conteúdo na variável rs
                 while (rs.next()) {
                     // espaço criado para inserir a tabela html que será mostrada em tela
-            %>
-            
+%>
+
             <tr>
                 <td> <%= rs.getString("cpfcli")%> </td>
                 <td> <%= rs.getString("nomecli")%> </td>
@@ -154,27 +158,27 @@
                 <td> <%= rs.getString("telcli")%> </td>
                 <td>
                     <form action="editarCliente.jsp" method="get">
-                        <input type="hidden" name="cpf" value="<%= rs.getString("cpfcli") %>">
+                        <input type="hidden" name="cpf" value="<%= rs.getString("cpfcli")%>">
                         <button type="submit">Editar</button>
                     </form>
                     <form action="excli.jsp" method="get">
-                        <input type="hidden" name="cpf" value="<%= rs.getString("cpfcli") %>">
+                        <input type="hidden" name="cpf" value="<%= rs.getString("cpfcli")%>">
                         <button type="submit">Excluir</button>
                     </form>
                 </td>
             </tr>
-            
+
             <%
                 }
             %>
-        <!-- Fechamento da tabela  -->    
+            <!-- Fechamento da tabela  -->    
         </table> 
-        
+
         <%
             } catch (Exception x) {
                 out.print("Erro:" + x.getMessage());
             }
         %>
-        
+
     </body>
 </html>
