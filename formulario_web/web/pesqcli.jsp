@@ -121,6 +121,7 @@
         <%
             String nome;
             nome = request.getParameter("nome");
+            
 
             try {
                 //Conectar com o banco de dados
